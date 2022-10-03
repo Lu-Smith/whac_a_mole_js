@@ -7,6 +7,19 @@
 body {
     text-align: center
 }
+
+h1 {
+    font-size: 40px;
+    line-height: 50px;
+    margin: 20px 0;
+}
+.display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
 .grid {
     margin: 0 auto;
     width: 651px;
