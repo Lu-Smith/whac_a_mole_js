@@ -2,6 +2,7 @@ const squares = document.querySelectorAll('.square')
 const mole = document.querySelector('.mole')
 const timeLeft = document.querySelector('#time-left')
 const score = document.querySelector('#score')
+const start = document.querySelector('#start')
 
 let result = 0
 let hitPosition
@@ -33,7 +34,8 @@ function moveMole() {
     timerId = setInterval(randomSquare, 600)
 }
 
-moveMole()
+start.addEventListener('click', moveMole)
+
 
 function countDown() {
 currentTime--
