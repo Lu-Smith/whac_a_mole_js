@@ -26,7 +26,7 @@ h1 {
     margin: 0 auto;
     width: 651px;
     height: 651px;
-    background-color: blue;
+    background-color: rgb(223, 155, 66);
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -38,13 +38,34 @@ h1 {
 .square {
     height: 200px;
     width: 200px;
-    border: 2px solid black;
+    border: 2px solid white;
     margin: 5px;
     border-radius: 10px;
+    background-color: rgb(243, 186, 111);
 }
 
-.mole {
-    background-color: bisque;
+.mole1 {
+    background-image: url("media/mole1.png");
+    background-size: cover;
+    background-color: rgb(31, 139, 89);
+}
+
+.mole2 {
+    background-image: url("media/mole2.png");
+    background-size: cover;
+    background-color: rgb(31, 139, 89);
+}
+
+.mole3 {
+    background-image: url("media/mole3.png");
+    background-size: cover;
+    background-color: rgb(31, 139, 89);
+}
+
+.mole4 {
+    background-image: url("media/mole4.png");
+    background-size: cover;
+    background-color: rgb(31, 139, 89);
 }
 
 button {
@@ -52,3 +73,4 @@ button {
     font-size: 20px;
     margin-top: 20px;
 }
+

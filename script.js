@@ -11,11 +11,25 @@ let timerId = null
 
 function randomSquare() {
     squares.forEach(square => {
-        square.classList.remove('mole')
+        square.classList.remove('mole1')
+        square.classList.remove('mole2')
+        square.classList.remove('mole3')
+        square.classList.remove('mole4')
     })
 
     let randomSquare = squares[Math.floor(Math.random() * 9)]
-    randomSquare.classList.add('mole')
+    if (randomSquare.id === '1' || randomSquare.id === '5') {
+        randomSquare.classList.add('mole1')
+    } else if (randomSquare.id === '2' || randomSquare.id === '6') {
+        randomSquare.classList.add('mole2')
+    } else if (randomSquare.id === '3' || randomSquare.id === '8') {
+        randomSquare.classList.add('mole3')
+    } else {
+        randomSquare.classList.add('mole4')
+    }
+
+    console.log(randomSquare)
+    
 
     hitPosition = randomSquare.id
 }
@@ -31,21 +45,23 @@ squares.forEach(square => {
 })
 
 function moveMole() {
+    let countDownTimerId = setInterval(countDown, 1000)
     timerId = setInterval(randomSquare, 600)
+
+    function countDown() {
+        currentTime--
+        timeLeft.textContent = currentTime
+        
+        if (currentTime == 0) {
+            clearInterval(countDownTimerId)
+            clearInterval(timerId)
+        }
+        }
+    
 }
 
 start.addEventListener('click', moveMole)
 
 
-function countDown() {
-currentTime--
-timeLeft.textContent = currentTime
 
-if (currentTime == 0) {
-    clearInterval(countDownTimerId)
-    clearInterval(timerId)
-    alert('Game Over! Your final score is ' + result)
-}
-}
 
-let countDownTimerId = setInterval(countDown, 1000)
