@@ -28,9 +28,6 @@ function randomSquare() {
         randomSquare.classList.add('mole4')
     }
 
-    console.log(randomSquare)
-    
-
     hitPosition = randomSquare.id
 }
 
@@ -44,23 +41,43 @@ squares.forEach(square => {
     })
 })
 
-function moveMole() {
-    let countDownTimerId = setInterval(countDown, 1000)
-    timerId = setInterval(randomSquare, 600)
 
-    function countDown() {
-        currentTime--
-        timeLeft.textContent = currentTime
+   
+let startGame = false
+
+start.addEventListener('click', (e) => {
+    if (startGame === false) {
+        let countDownTimerId = setInterval(countDown, 1000)
+        timerId = setInterval(randomSquare, 600)
+        function countDown() {
+           currentTime--
+           timeLeft.textContent = currentTime
         
-        if (currentTime == 0) {
-            clearInterval(countDownTimerId)
-            clearInterval(timerId)
+           if (currentTime == 0) {
+               clearInterval(countDownTimerId)
+               clearInterval(timerId)
+           }
         }
-        }
-    
-}
+        countDown(countDownTimerId) 
+        startGame = true
+    } 
+    if (startGame === true) {
+        return
+    }
+})
 
-start.addEventListener('click', moveMole)
+start.addEventListener('mouseover', (e) => {
+        let x = e.clientX - e.target.offsetLeft
+        let y = e.clientY - e.target.offsetTop
+        let ripples = document.createElement('span')
+        ripples.style.left = x + 'px'
+        ripples.style.top = y + 'px'
+        start.appendChild(ripples)
+
+        setTimeout(() => {
+            ripples.remove()
+        }, 1000)
+    } )
 
 
 
