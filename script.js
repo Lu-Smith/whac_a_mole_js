@@ -6,7 +6,7 @@ const start = document.querySelector('#start')
 
 let result = 0
 let hitPosition
-let currentTime = 60
+let currentTime = 30
 let timerId = null
 
 function randomSquare() {
@@ -45,23 +45,30 @@ squares.forEach(square => {
    
 let startGame = false
 
+function playGame() {
+    result = 0
+    score.textContent = 0
+    currentTime = 30
+    timeLeft.textContent = currentTime
+    let countDownTimerId = setInterval(countDown, 1000)
+    timerId = setInterval(randomSquare, 600)
+    startGame = true
+    function countDown() {
+       currentTime--
+       timeLeft.textContent = currentTime
+       if (currentTime == 0) {
+           clearInterval(countDownTimerId)
+           clearInterval(timerId)
+           startGame = false
+       }
+    }
+    countDown(countDownTimerId) 
+}
+
 start.addEventListener('click', (e) => {
     if (startGame === false) {
-        let countDownTimerId = setInterval(countDown, 1000)
-        timerId = setInterval(randomSquare, 600)
-        function countDown() {
-           currentTime--
-           timeLeft.textContent = currentTime
-        
-           if (currentTime == 0) {
-               clearInterval(countDownTimerId)
-               clearInterval(timerId)
-           }
-        }
-        countDown(countDownTimerId) 
-        startGame = true
-    } 
-    if (startGame === true) {
+        playGame()
+    } else {
         return
     }
 })
